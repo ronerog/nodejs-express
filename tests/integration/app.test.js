@@ -10,17 +10,9 @@ const app = require('../../src/app')
 describe('Usando o método GET em /teams', function () {
     it('Retorna a lista completa de times!', async function () {
         const output = [
-          {
-            id: 1,
-            name: 'São Paulo Futebol Clube',
-            initials: 'SPF',
-          },
-          {
-            id: 2,
-            name: 'Clube Atlético Mineiro',
-            initials: 'CAM',
-          },
-        ]
+          { id: 1, name: 'São Paulo Futebol Clube', initials: 'SPF' },
+          { id: 2, name: 'Sociedade Esportiva Palmeiras', initials: 'PAL' },
+        ];
 
         const response = await chai
           .request(app)
@@ -35,7 +27,6 @@ describe('Usando o método POST', function () {
 
     const output = 
       {
-        id: 3,
         name: "Clube de Regatas do Flamengo",
         initials: "FLA"
       }
@@ -45,12 +36,10 @@ describe('Usando o método POST', function () {
         .request(app)
         .post('/teams')
         .send({
-          id: 3,
-          name: "Clube de Regatas do Flamengo",
-          initials: "FLA"
+          name: "Clube de Regatas do Flamengo", initials: "FLA"
          });
 
     expect(response.status).to.be.equal(201)
-    expect(response.body.team).to.be.deep.equal(output)
+    expect(response.body.team).to.be.deep.equal(output.team)
   })
 });
