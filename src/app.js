@@ -23,7 +23,7 @@ app.get('/teams/:id', (req, res) => {
 });
 
 const validateTeam = (req, res, next) => {
-  const requiredProperties = ['nome', 'sigla'];
+  const requiredProperties = ['name', 'initials'];
   if (requiredProperties.every((property) => property in req.body)) {
     next(); // Chama o próximo middleware
   } else {
